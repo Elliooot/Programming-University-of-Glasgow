@@ -26,15 +26,31 @@ public class Main {
                 player.takeTurn();
             }
             int i = scanner.nextInt(); //Read the entered column
-            board.drop(player.getSymbol(), i); //drop
+            int row_rec; // record the row
+            row_rec = board.drop(player.getSymbol(), i - 1); //drop a disc
             disc_cnt++;
+            Grid.toString(board);
+
+            System.out.println("Do you want to regret your move? (Y/N)");
+            char ans = scanner.next().charAt(0);
+            if(ans == 'Y' || ans == 'y'){
+                board.undo(row_rec, i - 1);
+                disc_cnt--;
+                Grid.toString(board);
+                player.takeTurn();
+
+                int j = scanner.nextInt();
+                board.drop(player.getSymbol(), j - 1);
+                disc_cnt++;
+                Grid.toString(board);
+            }
+
             gameOver = board.haveWon(board, symbol);
             if(gameOver){
                 System.out.println("Player " + player.getName() + " won!");
             }else {
                 symbol = (symbol == 'X' ? 'O' : 'X');
             }
-            Grid.toString(board);
         }
     }
 }

@@ -8,7 +8,7 @@ public class Player {
     }
 
     public void takeTurn(){
-        System.out.println("Player " + name + " took turn");
+        System.out.println("Player " + name + ", it's your turn");
     }
 
     public String getName() {

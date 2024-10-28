@@ -17,12 +17,17 @@ public class Grid {
         }
     }
 
-    public void drop(char symbol, int col){
+    public int drop(char symbol, int col){
         int buttom = grid.length - 1;
         while(grid[buttom][col] != ' '){
             buttom--;
         }
         grid[buttom][col] = symbol;
+        return buttom; //save the row number for undo function
+    }
+
+    public void undo(int row, int col){
+        grid[row][col] = ' ';
     }
 
     public boolean checkIfFull(int disc_cnt){
