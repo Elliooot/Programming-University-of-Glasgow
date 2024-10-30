@@ -1,8 +1,9 @@
 public class Student extends Person{
     private double G;
+
     public Student(String s, int a, String g, double gpa){
         super(s, a, g);
-        G = gpa;
+        this.G = gpa;
     }
     @Override
     public String toString(){

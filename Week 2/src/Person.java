@@ -2,9 +2,9 @@ public class Person {
     protected String name; protected int age; protected String gender;
 
     public Person(String s, int a, String g){
-        name = s;
-        age = a;
-        gender = g;
+        this.name = s;
+        this.age = a;
+        this.gender = g;
     }
 
     public String getGender(){ return gender; }

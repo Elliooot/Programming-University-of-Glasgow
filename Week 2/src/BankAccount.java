@@ -1,6 +1,6 @@
 public class BankAccount {
-    private Person person; private int accountNumber;
-    private double balance; private static int nextAccountNumber = 53240;
+    protected Person person; protected int accountNumber;
+    protected double balance; private static int nextAccountNumber = 53240;
 
     public BankAccount(Person p){
         person = p;
