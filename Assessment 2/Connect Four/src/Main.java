@@ -1,6 +1,8 @@
 import java.util.Scanner;
 
 public class Main {
+    private static Scanner scanner = new Scanner(System.in);
+
     public static void main(String[] args) {
         Grid board = new Grid(6,7);
         Player player1 = new Player("Frank", 'O');
@@ -8,49 +10,49 @@ public class Main {
 
         char symbol = 'O'; //Let player1 go first
         boolean gameOver = false;
-        int disc_cnt = 0; //count the disc number
-        Player player;
+        boolean playerSwitch = true;
+        Disc disc;
 
-        Scanner scanner = new Scanner(System.in);
 
         while(!gameOver) {
-            if(board.checkIfFull(disc_cnt)){
-                System.out.println("Tie");
-                break;
-            }
-            if(symbol == 'O'){
-                player = player1;
-                player.takeTurn();
-            }else{
-                player = player2;
-                player.takeTurn();
-            }
-            int i = scanner.nextInt(); //Read the entered column
-            int row_rec; // record the row
-            row_rec = board.drop(player.getSymbol(), i - 1); //drop a disc
-            disc_cnt++;
-            Grid.toString(board);
+            Player player = playerSwitch ? player1 : player2;
 
-            System.out.println("Do you want to regret your move? (Y/N)");
-            char ans = scanner.next().charAt(0);
-            if(ans == 'Y' || ans == 'y'){
-                board.undo(row_rec, i - 1);
-                disc_cnt--;
-                Grid.toString(board);
+            boolean colNotFull = false; //check if a column is full
+            while(!colNotFull) {
                 player.takeTurn();
+                int i = scanner.nextInt() - 1; //Read the entered column
+                disc = board.drop(player.getSymbol(), i ); //drop a disc
+                if(disc != null) {
+                    colNotFull = true;
+                    Grid.toString(board);
+                    undoProcess(board, player, i);
 
-                int j = scanner.nextInt();
-                board.drop(player.getSymbol(), j - 1);
-                disc_cnt++;
-                Grid.toString(board);
+                }else{ System.out.println("The column is already full"); }
             }
 
             gameOver = board.haveWon(board, symbol);
             if(gameOver){
                 System.out.println("Player " + player.getName() + " won!");
             }else {
-                symbol = (symbol == 'X' ? 'O' : 'X');
+//                symbol = (symbol == 'X' ? 'O' : 'X');
+                playerSwitch = !playerSwitch;
             }
+        }
+        scanner.close();
+    }
+
+    private static void undoProcess(Grid board, Player player, int col) {
+        System.out.println("Do you want to regret your move? (Y/N)");
+        char ans = scanner.next().charAt(0);
+        if(ans == 'Y' || ans == 'y'){
+            board.undo(col);
+            Grid.toString(board);
+            player.takeTurn();
+
+            int j = scanner.nextInt() - 1;
+            board.drop(player.getSymbol(), j);
+//                disc = new Disc(player.getSymbol(), row_rec, j - 1);
+            Grid.toString(board);
         }
     }
 }

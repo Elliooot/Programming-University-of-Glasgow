@@ -17,26 +17,23 @@ public class Grid {
         }
     }
 
-    public int drop(char symbol, int col){
-        int buttom = grid.length - 1;
-        while(grid[buttom][col] != ' '){
-            buttom--;
+    public Disc drop(char symbol, int col){
+        for(int i = grid.length - 1; i >= 0; i--){
+            if(grid[i][col] == ' '){
+                grid[i][col] = symbol;
+                return new Disc(symbol, i, col);
+            }
         }
-        grid[buttom][col] = symbol;
-        return buttom; //save the row number for undo function
+        return null;
     }
 
-    public void undo(int row, int col){
-        grid[row][col] = ' ';
+    public void undo(int col){
+        int top = 0; //start checking from top row
+        while(grid[top][col] == ' '){
+            top++;
+        }
+        grid[top][col] = ' ';
     }
-
-    public boolean checkIfFull(int disc_cnt){
-        return disc_cnt == col * row;
-    }
-
-//    public int maximumLength(int row, int col){
-//
-//    }
 
     public boolean haveWon(Grid board, char symbol){
         for(int i = 0; i < board.row; i++){ //check row

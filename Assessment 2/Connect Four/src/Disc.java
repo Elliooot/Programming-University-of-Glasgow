@@ -3,7 +3,7 @@ public class Disc {
     private int col;
     private int row;
 
-    public Disc(char symbol, int col, int row) {
+    public Disc(char symbol, int row, int col) {
         this.symbol = symbol;
         this.col = col;
         this.row = row;
