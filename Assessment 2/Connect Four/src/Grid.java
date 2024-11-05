@@ -56,7 +56,7 @@ public class Grid {
             r -= rowIncrement;
             c -= colIncrement;
         }
-
+//        System.out.println(cnt);
         return cnt >= 4;
     }
 
