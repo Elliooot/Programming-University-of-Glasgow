@@ -8,29 +8,28 @@ public class Main {
         Player player1 = new Player("Frank", 'O');
         Player player2 = new Player("Colin", 'X');
 
-        char symbol = 'O'; //Let player1 go first
+//        char symbol = 'O'; //Let player1 go first
         boolean gameOver = false;
         boolean playerSwitch = true;
-        Disc disc;
 
 
         while(!gameOver) {
-            Player player = playerSwitch ? player1 : player2;
+            Player player = playerSwitch ? player1 : player2; //
 
-            boolean colNotFull = false; //check if a column is full
-            while(!colNotFull) {
+            Disc disc = null;
+            while(disc == null) {
                 player.takeTurn();
                 int i = scanner.nextInt() - 1; //Read the entered column
-                disc = board.drop(player.getSymbol(), i ); //drop a disc
+                disc = board.drop(player.getSymbol(), i ); //drop a disc, if successful it will return a Disc, otherwise it will return null
                 if(disc != null) {
-                    colNotFull = true;
                     Grid.toString(board);
                     undoProcess(board, player, i);
-
-                }else{ System.out.println("The column is already full"); }
+                }else{
+                    System.out.println("The column is already full");
+                }
             }
 
-            gameOver = board.haveWon(board, symbol);
+            gameOver = board.haveWon(disc);
             if(gameOver){
                 System.out.println("Player " + player.getName() + " won!");
             }else {
@@ -51,7 +50,6 @@ public class Main {
 
             int j = scanner.nextInt() - 1;
             board.drop(player.getSymbol(), j);
-//                disc = new Disc(player.getSymbol(), row_rec, j - 1);
             Grid.toString(board);
         }
     }

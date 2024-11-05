@@ -32,4 +32,13 @@ public class Disc {
     public void setRow(int row) {
         this.row = row;
     }
+
+    @Override
+    public String toString() {
+        return "Disc{" +
+                "symbol=" + symbol +
+                ", col=" + col +
+                ", row=" + row +
+                '}';
+    }
 }
