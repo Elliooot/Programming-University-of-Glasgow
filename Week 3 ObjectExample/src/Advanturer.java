@@ -13,7 +13,7 @@ public class Advanturer extends Avatar{
             System.out.println("Random number < 0.5");
             setGold(getGold() / 2);
         }else{
-            System.out.println("Random numberr > 0.5");
+            System.out.println("Random number > 0.5");
             setGold(getGold() * 2);
         }
     }

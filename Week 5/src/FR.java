@@ -4,7 +4,7 @@ import java.io.FileReader;
 import java.io.IOException;
 public class FR {
     public static void main(String[] args) {
-        FileReader fr = null;
+        FileReader fr = null; // Make the reference here so it is invisible in finally
         BufferedReader br = null;
         try{
             String fN = "C:/Users/user/Downloads/words.csv";

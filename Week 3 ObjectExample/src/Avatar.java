@@ -30,6 +30,37 @@ public class Avatar {
             strength -= 1;
     }
 
+    public boolean isActive(){
+        if((strength <= 0) || (gold <= 0)){
+            return false;
+        }
+        return true;
+    }
+
+    public String compareTo(Object o){
+        if(o instanceof Avatar){
+            Avatar a = (Avatar) o;
+            if(this.getGold() > a.getGold()){
+                return "av1 > av2";
+            }else if(this.getGold() < a.getGold()){
+                return "av1 < av2";
+            }else if(this.getGold() == a.getGold()){
+                if(this.getStrength() > a.getStrength()){
+                    return "av1 > av2";
+                }else if(this.getStrength() < a.getStrength()){
+                    return "av1 < av2";
+                }else if(this.getStrength() == a.getStrength()){
+                    if(this.getName().compareTo(a.getName()) > 0){
+                        return "av1 > av2";
+                    }else if(this.getName().compareTo(a.getName()) < 0){
+                        return "av1 < av2";
+                    }
+                }
+            }
+        }
+        return "av1 == av2";
+    }
+
     public String getName() {
         return name;
     }
@@ -44,13 +75,6 @@ public class Avatar {
 
     public void setGold(int gold) {
         this.gold = gold;
-    }
-
-    public boolean isActive(){
-        if((strength <= 0) || (gold <= 0)){
-            return false;
-        }
-        return true;
     }
 
     public int getStrength(){
