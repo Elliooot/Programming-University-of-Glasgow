@@ -26,4 +26,12 @@ public class Player {
     public void setSymbol(char symbol) {
         this.symbol = symbol;
     }
+
+    @Override
+    public String toString() {
+        return "Player{" +
+                "name='" + name + '\'' +
+                ", symbol=" + symbol +
+                '}';
+    }
 }
