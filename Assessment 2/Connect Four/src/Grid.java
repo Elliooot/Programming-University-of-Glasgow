@@ -63,14 +63,17 @@ public class Grid {
     }
 
     public static void toString(Grid board){ //print the board
-        for(int i = 0; i < board.row; i++){
+        for(int i = -1; i < board.row; i++){
+            System.out.println("--------------------------");
             for(int j = 0; j < board.col; j++){
-                if(board.grid[i][j] == null){ // Disc.getSymbol() cannot invoke null is a rather tricky problem
+                if(i < 0){
+                    System.out.print(String.format("%s   ", j + 1));
+                }else if(board.grid[i][j] == null){ // Disc.getSymbol() cannot invoke null is a rather tricky problem
                     System.out.print(String.format("%s", " "));
                 }else{
                     System.out.print(String.format("%s", board.grid[i][j].getSymbol()));
                 }
-                if(j != board.col - 1){
+                if(i >= 0 && j != board.col - 1){
                     System.out.print(" | ");
                 }
             }
