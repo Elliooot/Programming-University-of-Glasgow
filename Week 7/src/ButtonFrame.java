@@ -11,7 +11,7 @@ public class ButtonFrame extends JFrame {
         textField1 = new JTextField("Initial Text", 15);
         label1 = new JLabel("Click a button");
 
-        JPanelDemo panel = new JPanelDemo();
+        JPanel panel = new JPanel();
         panel.setLayout(new FlowLayout());
         panel.setBackground(Color.gray);
 
