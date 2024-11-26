@@ -7,13 +7,13 @@ public class CallingFilledPanel extends JFrame {
     public CallingFilledPanel() {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setTitle("Calling Filled Panel");
-        this.setSize(300, 150);
-        this.setLocation(300, 300);
+        this.setSize(400, 400);
+//        this.setLocation(300, 300);
 
-        filledPanel = new FilledPanel(200,200,200,200, Color.black, Color.blue);
-        filledPanelWithLine = new FilledPanelWithLine(200,200,200,200, Color.black, Color.blue);
-//        this.add(filledPanel);
-        this.add(filledPanelWithLine);
+        filledPanel = new FilledPanel(120,200,120,100, Color.gray, Color.blue);
+        filledPanelWithLine = new FilledPanelWithLine(120,200,120,100, Color.gray, Color.blue);
+        this.add(filledPanel);
+//        this.add(filledPanelWithLine);
     }
     public static void main(String[] args) {
         CallingFilledPanel frame = new CallingFilledPanel();

@@ -4,7 +4,7 @@ import java.awt.*;
 
 public class FilledPanelWithLine extends JPanel {
     public FilledPanelWithLine(int nBorder, int wBorder, int sBorder, int eBorder, Color borderColor, Color fillColor) {
-        setLayout(new BorderLayout());
+        this.setLayout(new BorderLayout());
         Border blackLine = BorderFactory.createLineBorder(Color.black);
         this.setBorder(blackLine);
         // need another panel for the inner border
