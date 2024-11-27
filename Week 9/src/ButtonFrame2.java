@@ -9,7 +9,8 @@ public class ButtonFrame2 extends JFrame implements ActionListener {
         //JFrame title, close and size
         this.setTitle("Button with listener");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setSize(300, 100);
+        this.setSize(400, 200);
+        this.setLocation(500, 300);
 
         b.addActionListener(this);
         this.add(b);
